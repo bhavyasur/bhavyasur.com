@@ -1,0 +1,21 @@
+body {
+    background-color: antiquewhite;
+    font-family: Andale Mono, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: antiquewhite;
+    color: black;
+    text-align: center;
+    padding: 1em 0;
+}
+
+section {
+    margin: 2em;
+    padding: 1em;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

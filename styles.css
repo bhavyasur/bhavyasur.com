@@ -38,6 +38,7 @@ body {
   outline: none;
 }
 
+
 /* Tags */
 .tags {
   display: flex;
@@ -46,14 +47,22 @@ body {
   margin-top: 1.5rem;
 }
 
-.tags span {
+.tags a {
   border: 2px solid black;
   border-radius: 20px;
   padding: 0.2rem 0.7rem;
   color: black;
   font-family: monospace;
   font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
+
+.tags a:hover {
+  background-color: black;
+  color: white;
+}
+
 
 /* Main content */
 .content {
@@ -77,3 +86,4 @@ body {
   max-width: 500px;
   border-radius: 8px;
 }
+

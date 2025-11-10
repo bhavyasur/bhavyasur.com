@@ -1,22 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 body {
-    background-color: antiquewhite;
-    font-family: Andale Mono, monospace;
-    margin: 0;
-    padding: 0;
+  font-family: monospace;
+  background-color: white;
+  color: black;
+  margin: 0;
 }
 
-header {
-    background-color: antiquewhite;
-    color: black;
-    font-size: 24
-    text-align: center;
-    padding: 1em 0;
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
 }
 
-section {
-    margin: 2em;
-    padding: 1em;
-    background-color: antiquewhite;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  padding: 2rem;
+  background: white;
+  border-right: 1px solid #eee;
+}
+
+.logo {
+  font-family: 'VT323', monospace;
+  font-size: 3rem;
+  color: black;
+  line-height: 1.1;
+}
+
+.search-box {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
+  border-radius: 25px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  outline: none;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.tags span {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 0.2rem 0.7rem;
+  color: black;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 3rem;
+}
+
+.section-title {
+  color: black;
+  font-family: 'VT323', monospace;
+  font-size: 1.8rem;
+}
+
+.bio {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.photo {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
 }

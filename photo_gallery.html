@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>photo gallery — bhavya surapaneni</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── GALLERY GRID ── */
+    .gallery {
+      columns: 3 200px;
+      column-gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s ease;
+      background: var(--card-bg);
+    }
+
+    .photo-item:hover {
+      border-color: var(--accent);
+    }
+
+    .photo-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: saturate(0.85) brightness(0.95);
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.04);
+      filter: saturate(1) brightness(1);
+    }
+
+    /* ── SIZE CLASSES ──
+       small  = short/thumbnail
+       medium = mid height
+       large  = spans full width (great for hero/landscape shots)
+       no class = natural height from the image itself */
+    .photo-item.small img  { max-height: 160px; object-fit: cover; }
+    .photo-item.medium img { max-height: 260px; object-fit: cover; }
+    .photo-item.large      { column-span: all; max-width: 560px; }
+
+    .photo-caption {
+      padding: 0.4rem 0.7rem 0.5rem;
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.95);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 88vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border: 1.5px solid var(--border);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      font-family: 'VT323', monospace;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover { color: var(--accent); }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'VT323', monospace;
+      font-size: 2.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.2s;
+      user-select: none;
+    }
+
+    .lightbox-nav:hover { color: var(--accent); }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+
+    .lightbox-caption {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h1 class="logo">bhavya<br>surapaneni</h1>
+      <input type="text" placeholder="search" class="search-box"/>
+      <div class="tags">
+        <a href="index.html">about</a>
+        <a href="engineering_projects.html">engineering</a>
+        <a href="research.html">research</a>
+        <a href="creative.html">creative</a>
+        <a href="photo_gallery.html" class="active">photo gallery</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h2 class="section-title">photo gallery</h2>
+      <p class="subtitle">a collection of moments</p>
+
+      <!-- ══════════════════════════════════════════
+           HOW TO ADD PHOTOS:
+           1. Copy a .photo-item block
+           2. Replace YOUR_PHOTO.jpg with your filename
+           3. Pick a size class: small | medium | large | (none)
+           4. Delete the caption div if you don't want one
+      ══════════════════════════════════════════ -->
+      <div class="gallery" id="gallery">
+
+        <div class="photo-item small">
+          <img src="images/1757349718777.jpeg alt="" />
+          <div class="photo-caption">top 5 project presentation @ booz allen</div>
+        </div>
+
+        <div class="photo-item">
+          <img src="images/img_0435_720.jpg" alt="" />
+          <div class="photo-caption">introduction to SWE corporate dinner as co-director</div>
+        </div>
+
+        <div class="photo-item large">
+          <img src="images/IMG_4405.jpg" alt="" />
+          <div class="photo-caption">introducing new members to Penn EWB as president</div>
+        </div>
+
+        <div class="photo-item medium">
+          <img src="images/IMG_4406.jpg" alt="" />
+          <div class="photo-caption">penn SWE conference</div>
+        </div>
+
+        <div class="photo-item small">
+          <img src="images/IMG_4409.jpg" alt="" />
+          <div class="photo-caption">running lights for Bloomers Sketch Comedy</div>
+        </div>
+
+        <div class="photo-item">
+          <img src="images/IMG_4410.jpg" alt="" />
+          <div class="photo-caption">building Bloomers set</div>
+        </div>
+
+        <div class="photo-item">
+          <img src="images/IMG_4678.JPG" alt="" />
+          <div class="photo-caption">panelist at annual SWE GEARS Day</div>
+        </div>
+
+        <div class="photo-item">
+          <img src="images/IMG_6252.JPG" alt="" />
+          <div class="photo-caption">teaching EE workshop @ SWE GEARS Day</div>
+        </div>
+
+        <!-- keep adding .photo-item blocks above this line -->
+      </div>
+    </main>
+  </div>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" onclick="closeLightbox()">[ close ]</div>
+    <span class="lightbox-nav lightbox-prev" onclick="changePhoto(-1)">←</span>
+    <img id="lightbox-img" src="" alt="" />
+    <span class="lightbox-nav lightbox-next" onclick="changePhoto(1)">→</span>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.photo-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    let current = 0;
+
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+
+    function openLightbox(index) {
+      current = index;
+      const img = items[current].querySelector('img');
+      const cap = items[current].querySelector('.photo-caption');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = cap ? cap.textContent : '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function changePhoto(dir) {
+      current = (current + dir + items.length) % items.length;
+      const img = items[current].querySelector('img');
+      const cap = items[current].querySelector('.photo-caption');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = cap ? cap.textContent : '';
+    }
+
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') changePhoto(-1);
+      if (e.key === 'ArrowRight') changePhoto(1);
+    });
+  </script>
+</body>
+</html>

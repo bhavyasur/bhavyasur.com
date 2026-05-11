@@ -2,11 +2,11 @@
 
 :root {
   --bg: #111;
-  --bg-sidebar: #1a1a1a;
+  --bg-sidebar: #1f1d1d;
   --text: #f0ece3;
-  --text-muted: #cf6a3c;
-  --border: #333;
-  --accent: #d13f3f;
+  --text-muted: #ED7D3A;
+  --border: #444040;
+  --accent: #b11010;
   --card-bg: #161616;
 }
 
@@ -40,7 +40,7 @@ body {
 
 .logo {
   font-family: 'VT323', monospace;
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--text);
   line-height: 1.1;
 }
@@ -56,6 +56,69 @@ body {
   background: transparent;
   color: var(--text);
   box-sizing: border-box;
+  font-family: monospace;
+}
+
+/* Search wrapper & results dropdown */
+.search-wrapper {
+  position: relative;
+  margin-top: 1.2rem;
+}
+
+.search-wrapper .search-box {
+  margin-top: 0;
+}
+
+.search-results {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  background: var(--bg-sidebar);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.search-results.open {
+  display: block;
+}
+
+.search-result-item {
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: var(--bg);
+}
+
+.search-result-title {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-family: monospace;
+}
+
+.search-result-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: monospace;
+  margin-top: 0.1rem;
+}
+
+.search-no-results {
+  padding: 0.55rem 0.9rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
   font-family: monospace;
 }
 
@@ -117,7 +180,7 @@ body {
 .section-title {
   color: var(--text);
   font-family: 'VT323', monospace;
-  font-size: 2.4rem;
+  font-size: 2.7rem;
   margin: 0 0 0.4rem;
 }
 
@@ -136,7 +199,7 @@ body {
 
 .photo {
   width: 100%;
-  max-width: 440px;
+  max-width: 330px;
   border-radius: 6px;
   border: 1.5px solid var(--border);
   display: block;
@@ -194,7 +257,7 @@ body {
 
 .project-card-title {
   font-family: 'VT323', monospace;
-  font-size: 1.45rem;
+  font-size: 1.8rem;
   color: var(--text);
   margin: 0 0 0.45rem;
 }
@@ -251,14 +314,14 @@ body {
 }
 
 .social-links a {
-  color: var(--text-muted);
+  color: var(--accent);
   transition: color 0.18s;
   display: flex;
   align-items: center;
 }
 
 .social-links a:hover {
-  color: var(--accent);
+  color: var(--text-muted);
 }
 
 .social-links svg {

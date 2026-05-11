@@ -314,14 +314,14 @@ body {
 }
 
 .social-links a {
-  color: var(--accent);
+  color: var(--text-muted);
   transition: color 0.18s;
   display: flex;
   align-items: center;
 }
 
 .social-links a:hover {
-  color: var(--text-muted);
+  color: var(--accent);
 }
 
 .social-links svg {
